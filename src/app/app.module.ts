@@ -11,13 +11,15 @@ import { StudentsComponent } from './students/students.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { InstrumentComponent } from './instrument/instrument.component';
 import { FreeapiService } from './freeapi.service';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentsComponent,
     SearchFormComponent,
-    InstrumentComponent
+    InstrumentComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

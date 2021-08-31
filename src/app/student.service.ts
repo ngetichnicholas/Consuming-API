@@ -47,7 +47,7 @@ export class RestApiService {
 
   // HttpClient API get() method => Fetch Student
   getStudent(id): Observable<Student> {
-    return this.http.get<Student>(this.apiURL + '/Students/' + id)
+    return this.http.get<Student>(this.apiURL + '/students/' + id)
     .pipe(
       retry(1),
       catchError(this.handleError)

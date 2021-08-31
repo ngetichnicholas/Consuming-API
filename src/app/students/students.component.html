@@ -8,11 +8,12 @@
                 <p>There is no student fetched yet!</p>
             </div>
             <div *ngIf="Student.length !== 0">
-                <h3 class="mb-3 text-center">Students List</h3>
+                <h3 class="mb-3">Students List</h3>
                 <table class="table">
                     <tbody>
                         <tr *ngFor="let student of Student">
-                            <p>{{student.id}}. {{student.name}} has played  the guitar for {{student.experience}}
+                            <p>{{student.id}}. <span class="details" routerLink="/details/{{student.id}}">{{student.name}}</span>
+                                 has played  the <span class="tool">guitar</span> for {{student.experience}}
                                 years.</p>
                         </tr>
                     </tbody>
@@ -20,33 +21,17 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="no-data text-center" *ngIf="Instrument.length == 0">
-                <p>There is no instruments fetched yet!</p>
+            <h3>Select instrument</h3>
+            <div class="row">
+                <select [(ngModel)]='InstrumentSelected' (ngModelChange)='onInstrumentSelected($event)' name="" id="">
+                    <option *ngFor='let instrument of lstInstruments' [value]="instrument.id">
+                        {{instrument.name}}
+                    </option>
+                </select>
             </div>
-            <div *ngIf="Instrument.length !== 0">
-                <h3 class="mb-3 text-center">Instruments List</h3>
-                <table class="table">
-                    <tbody>
-                        <tr *ngFor="let instrument of Instrument">
-                            <p>{{instrument.id}}. {{instrument.name}}</p>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <ul *ngFor="let student of lstStudents">
+                <li>{{student.name}}</li>
+            </ul>
         </div>
     </div>
-    <div class="row">
-        <select [(ngModel)]='InstrumentSelected' (ngModelChange)='onInstrumentSelected($event)' name="" id="">
-            <option *ngFor='let instrument of lstInstruments' [value]="instrument.id">
-                {{instrument.name}}
-            </option>
-        </select>
-    </div>
-    <ol *ngFor="let student of lstStudents">
-        <li>{{student.name}}</li>
-
-
-    </ol>
-
-
 </div>
