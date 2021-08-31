@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RestApiService } from "../student.service";
+
 
 @Component({
   selector: 'app-students',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  constructor() { }
+  Student: any = [];
 
-  ngOnInit(): void {
+  constructor(
+    public restApi: RestApiService
+  ) { }
+
+  ngOnInit() {
+    this.loadStudents()
+  }
+
+  // Get Students list
+  loadStudents() {
+    return this.restApi.getStudents().subscribe((data: {}) => {
+      this.Student = data;
+    })
   }
 
 }
