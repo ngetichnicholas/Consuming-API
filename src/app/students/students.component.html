@@ -1,24 +1,40 @@
 <div class="container custom-container-2">
 
-    <!-- Show it when there is no student -->
-    <div class="no-data text-center" *ngIf="Student.length == 0">
-      <p>There is no student fetched yet!</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Show it when there is no student -->
+            <div class="no-data text-center" *ngIf="Student.length == 0">
+                <p>There is no student fetched yet!</p>
+            </div>
+            <div *ngIf="Student.length !== 0">
+                <h3 class="mb-3 text-center">Students List</h3>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let student of Student">
+                            <p>{{student.id}}. {{student.name}} has played the {{student.instrumentId}} for {{student.experience}}
+                                years.</p>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="no-data text-center" *ngIf="Instrument.length == 0">
+                <p>There is no instruments fetched yet!</p>
+            </div>
+            <div *ngIf="Instrument.length !== 0">
+                <h3 class="mb-3 text-center">Instruments List</h3>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let instrument of Instrument">
+                            <p>{{instrument.id}}. {{instrument.name}}</p>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  
-    <!-- students list table, it hides when there is no student -->
-    <div *ngIf="Student.length !== 0">
-      <h3 class="mb-3 text-center">Students List</h3>
-  
-      <div class="col-md-12">
-        <table class="table">
-          <tbody>
-            <tr *ngFor="let student of Student">
-              <p>{{student.id}}. {{student.name}} has played the 'instrument' for {{student.experience}} years.</p>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-    </div>
-  
-  </div>
+
+
+</div>

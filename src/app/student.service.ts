@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Student } from './student';
+import { Instrument } from './instrument';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -35,6 +36,15 @@ export class RestApiService {
     )
   }
 
+    // HttpClient API get() method => Fetch Instruments list
+    getInstruments(): Observable<Instrument> {
+      return this.http.get<Instrument>(this.apiURL + '/instruments')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+    }
+
   // HttpClient API get() method => Fetch Student
   getStudent(id): Observable<Student> {
     return this.http.get<Student>(this.apiURL + '/Students/' + id)
@@ -42,35 +52,8 @@ export class RestApiService {
       retry(1),
       catchError(this.handleError)
     )
-  }  
-
-  // HttpClient API post() method => Create Student
-  createStudent(Student): Observable<Student> {
-    return this.http.post<Student>(this.apiURL + '/Students', JSON.stringify(Student), this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }  
-
-  // HttpClient API put() method => Update Studenthttp://localhost:3000
-  updateStudent(id, Student): Observable<Student> {
-    return this.http.put<Student>(this.apiURL + '/Students/' + id, JSON.stringify(Student), this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
-
-  // HttpClient API delete() method => Delete Student
-  deleteStudent(id){
-    return this.http.delete<Student>(this.apiURL + '/Students/' + id, this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
-
+  } 
+  
   // Error handling 
   handleError(error) {
      let errorMessage = '';

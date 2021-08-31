@@ -10,6 +10,7 @@ import { RestApiService } from "../student.service";
 export class StudentsComponent implements OnInit {
 
   Student: any = [];
+  Instrument: any = []
 
   constructor(
     public restApi: RestApiService
@@ -17,6 +18,7 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit() {
     this.loadStudents()
+    this.loadInstruments()
   }
 
   // Get Students list
@@ -25,5 +27,12 @@ export class StudentsComponent implements OnInit {
       this.Student = data;
     })
   }
+
+    // Get instrument list
+    loadInstruments() {
+      return this.restApi.getInstruments().subscribe((data: {}) => {
+        this.Instrument = data;
+      })
+    }
 
 }
