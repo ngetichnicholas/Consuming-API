@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from "../student.service";
+import { FreeapiService } from '../freeapi.service';
+
+import { Student } from '../student';
+import { Instrument } from '../instrument';
+
 
 
 @Component({
@@ -13,12 +18,23 @@ export class StudentsComponent implements OnInit {
   Instrument: any = []
 
   constructor(
-    public restApi: RestApiService
+    public restApi: RestApiService,private _freeApiService: FreeapiService
   ) { }
+
+  lstInstruments:Instrument[];
 
   ngOnInit() {
     this.loadStudents()
     this.loadInstruments()
+
+    this._freeApiService.getInstruments()
+    .subscribe
+    (
+      data=>
+      {
+        this.lstInstruments = data;
+      }
+    )
   }
 
   // Get Students list

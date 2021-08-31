@@ -35,6 +35,13 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <select name="" id="">
+            <option *ngFor='let instrument of lstInstruments' [value]="instrument.id">
+                {{instrument.name}}
+            </option>
+        </select>
+    </div>
 
 
 </div>

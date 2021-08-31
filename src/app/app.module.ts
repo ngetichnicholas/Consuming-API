@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { StudentsComponent } from './students/students.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { InstrumentComponent } from './instrument/instrument.component';
+import { FreeapiService } from './freeapi.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { InstrumentComponent } from './instrument/instrument.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FreeapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
