@@ -36,12 +36,13 @@
         </div>
     </div>
     <div class="row">
-        <select name="" id="">
+        <select [(ngModel)]='InstrumentSelected' name="" id="">
             <option *ngFor='let instrument of lstInstruments' [value]="instrument.id">
                 {{instrument.name}}
             </option>
         </select>
     </div>
+    <P>The selected Instrument id is :: {{InstrumentSelected}}</P>
 
 
 </div>

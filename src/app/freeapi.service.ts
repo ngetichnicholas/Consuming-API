@@ -15,4 +15,10 @@ export class FreeapiService {
   {
     return this.httpclient.get("https://my-json-server.typicode.com/vocanter-llc/music-students/instruments");
   }
+
+  getStudentsForSelectedInstrument(selectedInstrumentId:string):Observable<any>
+  {
+    let params1 = new HttpParams().set('instrumentId', selectedInstrumentId);
+    return this.httpclient.get("https://my-json-server.typicode.com/vocanter-llc/music-students/students",{params:params1});
+  }
 }

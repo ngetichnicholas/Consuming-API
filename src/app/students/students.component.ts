@@ -22,6 +22,7 @@ export class StudentsComponent implements OnInit {
   ) { }
 
   lstInstruments:Instrument[];
+  InstrumentSelected:number
 
   ngOnInit() {
     this.loadStudents()
