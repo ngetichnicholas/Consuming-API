@@ -22,7 +22,8 @@ export class StudentsComponent implements OnInit {
   ) { }
 
   lstInstruments:Instrument[];
-  InstrumentSelected:number
+  InstrumentSelected:number;
+  lstStudents:Student[];
 
   ngOnInit() {
     this.loadStudents()
@@ -34,6 +35,17 @@ export class StudentsComponent implements OnInit {
       data=>
       {
         this.lstInstruments = data;
+      }
+    )
+  }
+
+  onInstrumentSelected(selectedInstrumentId:any):void {
+    this._freeApiService.getStudentsForSelectedInstrument(selectedInstrumentId)
+    .subscribe
+    (
+      data=>
+      {
+        this.lstStudents = data;
       }
     )
   }
